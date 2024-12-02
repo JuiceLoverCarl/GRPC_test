@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package task;
+
+service RagService {
+  rpc ExecuteTask (Request) returns (Response) {}
+}
+
+// 定义请求消息
+message Request {
+  string question = 1;
+}
+
+// 定义响应消息
+message Response {
+  bool status = 1;
+  repeated Context contexts = 2;
+}
+
+// 定义上下文消息
+message Context {
+  string page_content = 1;
+  repeated string meta_data = 2;
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package connect;
+
+service Connect {
+    rpc TransmitMessage (Request) returns (Response);
+}
+
+message Context {
+     string page_content = 1;  // 页面内容
+    string meta_data = 2;     // 元数据
+}
+
+message Request {
+    string question = 1;
+}
+
+message Response {
+    repeated Context contexts = 1;  // 一个包含多个 Context 对象的数组
+}
+
